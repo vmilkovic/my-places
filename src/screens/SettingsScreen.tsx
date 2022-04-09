@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-const PlaceDetailScreen = () => {
+const SettingsScreen = () => {
   const { t } = useTranslation();
 
   return (
     <View>
-      <Text>{t('screens.placeDetail.title')}</Text>
+      <Text>{t('screens.settings.title')}</Text>
     </View>
   );
 };
 
-export default PlaceDetailScreen;
+export default SettingsScreen;

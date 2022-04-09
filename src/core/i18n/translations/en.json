@@ -1,0 +1,37 @@
+{
+  "title": "My Places",
+  "tabs": {
+    "places": "Places",
+    "addPlace": "Add Place",
+    "profile": "Profile"
+  },
+  "screens": {
+    "signIn": {
+      "title": "Sign In"
+    },
+    "signUp": {
+      "title": "Sign Up"
+    },
+    "listPlaces": {
+      "title": "All Places"
+    },
+    "favoritePlaces": {
+      "title": "Favorite Places"
+    },
+    "addPlace": {
+      "title": "Add Place"
+    },
+    "placeDetail": {
+      "title": "Place Detail"
+    },
+    "editPlace": {
+      "title": "Edit Place"
+    },
+    "settings": {
+      "title": "Settings"
+    },
+    "profile": {
+      "title": "Profile"
+    }
+  }
+}

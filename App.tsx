@@ -1,13 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 
+import AppNavigator from 'navigation/AppNavigator';
 import { store } from 'store';
+import 'core/i18n';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Text>My Places</Text>
+      <AppNavigator />
     </Provider>
   );
 };

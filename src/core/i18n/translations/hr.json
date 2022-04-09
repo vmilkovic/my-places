@@ -1,0 +1,37 @@
+{
+  "title": "Moja Mjesta",
+  "tabs": {
+    "places": "Mjesta",
+    "addPlace": "Dodaj Mjesto",
+    "profile": "Profil"
+  },
+  "screens": {
+    "signIn": {
+      "title": "Prijava"
+    },
+    "signUp": {
+      "title": "Registracija"
+    },
+    "listPlaces": {
+      "title": "Sva Mjesta"
+    },
+    "favoritePlaces": {
+      "title": "Omiljena Mjesta"
+    },
+    "addPlace": {
+      "title": "Dodaj Mjesto"
+    },
+    "placeDetail": {
+      "title": "Opširnije o Mjestu"
+    },
+    "editPlace": {
+      "title": "Uredi Mjesto"
+    },
+    "settings": {
+      "title": "Postavke"
+    },
+    "profile": {
+      "title": "Profil"
+    }
+  }
+}
