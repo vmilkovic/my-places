@@ -2,6 +2,7 @@ import { IPlace } from './../utils/interfaces';
 
 class Place implements IPlace {
   title: string;
+  description: string;
   imageUri: string;
   address: string;
   lat: number;
@@ -9,6 +10,7 @@ class Place implements IPlace {
 
   constructor(
     title: string,
+    description: string,
     imageUri: string,
     address: string,
     lat: number,

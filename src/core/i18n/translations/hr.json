@@ -63,7 +63,28 @@
       "title": "Omiljena Mjesta"
     },
     "addPlace": {
-      "title": "Dodaj Mjesto"
+      "title": "Dodaj Mjesto",
+      "sections": {
+        "image": {
+          "title": "Slika"
+        },
+        "map": {
+          "title": "Lokacija"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Naziv mjesta",
+          "placeholder": "Unesite naziv mjesta"
+        },
+        "description": {
+          "label": "Opis mjesta",
+          "placeholder": "Unesite opis mjesta"
+        }
+      },
+      "buttons": {
+        "submit": "Spremi"
+      }
     },
     "placeDetail": {
       "title": "Opširnije o Mjestu"
@@ -104,7 +125,7 @@
         }
       },
       "buttons": {
-        "save": "Spremi"
+        "submit": "Spremi"
       }
     },
     "settings": {
@@ -116,11 +137,9 @@
           "hr": "Hrvatski"
         }
       },
-      "camera": {
-        "title": "Kamera"
-      },
-      "location": {
-        "title": "Lokacija"
+      "appOptions": {
+        "title": "O aplikaciji",
+        "button": "Prikaži opcije"
       }
     }
   },

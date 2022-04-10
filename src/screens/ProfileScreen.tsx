@@ -67,7 +67,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.signUp.fields.username.placeholder')}
           />
           {errors.username && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -83,7 +83,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.profile.fields.email.placeholder')}
           />
           {errors.email && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -99,7 +99,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.profile.fields.firstName.placeholder')}
           />
           {errors.firstName && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -115,7 +115,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.profile.fields.lastName.placeholder')}
           />
           {errors.lastName && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -132,7 +132,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.profile.fields.password.placeholder')}
           />
           {errors.currentPassword && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -149,7 +149,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             placeholder={t('screens.profile.fields.newPassword.placeholder')}
           />
           {errors.newPassword && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -168,7 +168,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
             )}
           />
           {errors.repeatNewPassword && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
       </View>
@@ -177,7 +177,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
         <View style={styles.button}>
           <CustomButton
             onPress={handleSubmit(onSubmit)}
-            title={t('screens.profile.buttons.save')}
+            title={t('screens.profile.buttons.submit')}
           />
         </View>
       </View>
@@ -202,9 +202,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 2,
+    alignSelf: 'center',
   },
   error: {
     color: Colors.Error,
+    alignSelf: 'center',
   },
 });
 

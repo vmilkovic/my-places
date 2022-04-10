@@ -30,7 +30,7 @@ const PlaceDetailScreen = ({ navigation }: ListPlacesProps) => {
 
   return (
     <View>
-      <Text>{t('screens.placeDetail.title')}</Text>
+      <Text>{t<string>('screens.placeDetail.title')}</Text>
     </View>
   );
 };

@@ -63,7 +63,28 @@
       "title": "Favorite Places"
     },
     "addPlace": {
-      "title": "Add Place"
+      "title": "Add Place",
+      "sections": {
+        "image": {
+          "title": "Image"
+        },
+        "map": {
+          "title": "Location"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Place title",
+          "placeholder": "Enter place title"
+        },
+        "description": {
+          "label": "Place description",
+          "placeholder": "Enter place description"
+        }
+      },
+      "buttons": {
+        "submit": "Save"
+      }
     },
     "placeDetail": {
       "title": "Place Detail"
@@ -104,7 +125,7 @@
         }
       },
       "buttons": {
-        "save": "Save"
+        "submit": "Save"
       }
     },
     "settings": {
@@ -116,11 +137,9 @@
           "hr": "Croatian"
         }
       },
-      "camera": {
-        "title": "Camera"
-      },
-      "location": {
-        "title": "Location"
+      "appOptions": {
+        "title": "About application",
+        "button": "Show options"
       }
     }
   },

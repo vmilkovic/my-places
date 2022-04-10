@@ -7,8 +7,10 @@ import BottomTabNavigator from './BottomTabNavigator';
 import FavoritePlacesScreen from 'screens/FavoritePlacesScreen';
 import PlaceDetailScreen from 'screens/PlaceDetailScreen';
 import SettingsScreen from 'screens/SettingsScreen';
+import MapScreen from 'screens/MapScreen';
 import HeaderLogo from 'components/HeaderLogo';
 import Colors from 'utils/colors';
+import Fonts from 'utils/fonts';
 
 const MainStackNavigator = createNativeStackNavigator();
 
@@ -19,7 +21,11 @@ const MainNavigator = () => {
     <MainStackNavigator.Navigator
       initialRouteName="Main"
       screenOptions={{
-        headerTintColor: Colors.Primary,
+        headerTitleStyle: {
+          fontWeight: '900',
+          fontSize: Fonts.size.HeaderTitle,
+          color: Colors.Primary,
+        },
         headerStyle: {
           backgroundColor: Colors.Surface,
         },
@@ -57,6 +63,7 @@ const MainNavigator = () => {
           headerLeft: HeaderLogo,
         }}
       />
+      <MainStackNavigator.Screen name="Map" component={MapScreen} />
     </MainStackNavigator.Navigator>
   );
 };

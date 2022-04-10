@@ -44,7 +44,7 @@ const SignInScreen = ({ navigation }) => {
             placeholder={t('screens.signIn.fields.username.placeholder')}
           />
           {errors.username && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -61,7 +61,7 @@ const SignInScreen = ({ navigation }) => {
             placeholder={t('screens.signIn.fields.password.placeholder')}
           />
           {errors.password && (
-            <Text style={styles.error}>{t('errors.required')}</Text>
+            <Text style={styles.error}>{t<string>('errors.required')}</Text>
           )}
         </View>
 
@@ -105,9 +105,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 2,
+    alignSelf: 'center',
   },
   error: {
     color: Colors.Error,
+    alignSelf: 'center',
   },
 });
 

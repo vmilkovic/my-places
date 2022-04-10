@@ -1,4 +1,5 @@
 import type { NavigationProp } from '@react-navigation/native';
+import { StyleSheetProperties } from 'react-native';
 
 export type ListPlacesProps = {
   navigation: NavigationProp<{}>;
@@ -27,6 +28,8 @@ export type InputControllerProps = {
   placeholder: string;
   secureTextEntry?: boolean;
   disabled?: boolean;
+  multiline?: boolean;
+  numberOfLines?: number;
 };
 
 export type CustomButtonProps = {
@@ -35,4 +38,11 @@ export type CustomButtonProps = {
   mode?: 'text' | 'outlined' | 'contained';
   title: string;
   onPress: () => any;
+};
+
+export type TouchableImageProps = {
+  onPress: () => void;
+  source: _SourceUri;
+  imageContainerStyle: StyleSheetProperties;
+  imageStyle: StyleSheetProperties;
 };

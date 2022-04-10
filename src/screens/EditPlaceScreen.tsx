@@ -8,7 +8,7 @@ const EditPlaceScreen = () => {
 
   return (
     <View>
-      <Text>{t('screens.editPlace.title')}</Text>
+      <Text>{t<string>('screens.editPlace.title')}</Text>
     </View>
   );
 };

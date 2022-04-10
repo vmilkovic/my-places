@@ -30,7 +30,7 @@ const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
 
   return (
     <View>
-      <Text>{t('screens.listPlaces.title')}</Text>
+      <Text>{t<string>('screens.listPlaces.title')}</Text>
     </View>
   );
 };

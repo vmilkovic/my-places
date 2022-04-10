@@ -8,6 +8,7 @@ export interface IUser {
 
 export interface IPlace {
   title: string;
+  description: string;
   imageUri: string;
   address: string;
   lat: number;

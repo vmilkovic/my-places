@@ -8,7 +8,7 @@ const FavoritePlacesScreen = () => {
 
   return (
     <View>
-      <Text>{t('screens.favoritePlaces.title')}</Text>
+      <Text>{t<string>('screens.favoritePlaces.title')}</Text>
     </View>
   );
 };
