@@ -2,19 +2,20 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useTranslation } from 'react-i18next';
 
 import ListPlacesScreen from 'screens/ListPlacesScreen';
 import AddPlaceScreen from 'screens/AddPlaceScreen';
 import ProfileScreen from 'screens/ProfileScreen';
-
-import { Colors, Fonts } from 'assets';
+import Colors from 'utils/colors';
+import Fonts from 'utils/fonts';
 
 const BottomTab = createMaterialBottomTabNavigator();
 
 const { TabIcon: TabIconSize } = Fonts.size;
 const {
-  Primary: PrimaryColor,
-  Text: TextColor,
+  PrimaryDark: PrimaryDarkColor,
+  Dark: TabInactiveColor,
   Background: BackgroundColor,
 } = Colors;
 
@@ -25,17 +26,19 @@ const styles = StyleSheet.create({
 });
 
 function BottomTabNavigator() {
+  const { t } = useTranslation();
+
   return (
     <BottomTab.Navigator
       initialRouteName="PlacesListTab"
-      activeColor={PrimaryColor}
-      inactiveColor={TextColor}
+      activeColor={PrimaryDarkColor}
+      inactiveColor={TabInactiveColor}
       barStyle={styles.bar}>
       <BottomTab.Screen
         name="PlacesListTab"
         component={ListPlacesScreen}
         options={{
-          tabBarLabel: 'Places',
+          tabBarLabel: t('tabs.places'),
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="room" color={color} size={TabIconSize} />
           ),
@@ -45,7 +48,7 @@ function BottomTabNavigator() {
         name="AddPlaceTab"
         component={AddPlaceScreen}
         options={{
-          tabBarLabel: 'Add Place',
+          tabBarLabel: t('tabs.addPlace'),
           tabBarIcon: ({ color }) => (
             <MaterialIcons
               name="add-location"
@@ -59,7 +62,7 @@ function BottomTabNavigator() {
         name="ProfileTab"
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: t('tabs.profile'),
           tabBarIcon: ({ color }) => (
             <MaterialIcons
               name="account-box"

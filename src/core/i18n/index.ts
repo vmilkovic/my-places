@@ -2,6 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { getLocales } from 'react-native-localize';
 
+import { FALLBACK_LANGUAGE } from './../../utils/constants';
+
 import translationEN from './translations/en.json';
 import translationHR from './translations/hr.json';
 
@@ -11,8 +13,9 @@ const resources = {
 };
 
 i18n.use(initReactI18next).init({
+  compatibilityJSON: 'v3',
   lng: getLocales()[0].languageCode,
-  fallbackLng: 'en',
+  fallbackLng: FALLBACK_LANGUAGE,
   resources,
 });
 

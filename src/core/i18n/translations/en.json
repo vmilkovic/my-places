@@ -7,13 +7,57 @@
   },
   "screens": {
     "signIn": {
-      "title": "Sign In"
+      "title": "Sign In",
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "Enter your username"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        }
+      },
+      "buttons": {
+        "signIn": "Sign In",
+        "register": "Register"
+      }
     },
     "signUp": {
-      "title": "Sign Up"
+      "title": "Sign Up",
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "Enter your username"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "firstName": {
+          "label": "Fist Name",
+          "placeholder": "Enter your first name"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Enter your last name"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        },
+        "repeatPassword": {
+          "label": "Repeat Password",
+          "placeholder": "Repeat password"
+        }
+      },
+      "buttons": {
+        "signIn": "Sign In",
+        "register": "Register"
+      }
     },
     "listPlaces": {
-      "title": "All Places"
+      "title": "Places"
     },
     "favoritePlaces": {
       "title": "Favorite Places"
@@ -27,11 +71,60 @@
     "editPlace": {
       "title": "Edit Place"
     },
-    "settings": {
-      "title": "Settings"
-    },
     "profile": {
-      "title": "Profile"
+      "title": "Profile",
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "Change your username"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Change your email"
+        },
+        "firstName": {
+          "label": "Fist Name",
+          "placeholder": "Change your first name"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Change your last name"
+        },
+        "password": {
+          "label": "Current Password",
+          "placeholder": "Enter your current password"
+        },
+        "newPassword": {
+          "label": "New Password",
+          "placeholder": "New your password"
+        },
+        "repeatNewPassword": {
+          "label": "Repeat new Password",
+          "placeholder": "Repeat new password"
+        }
+      },
+      "buttons": {
+        "save": "Save"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "languages": {
+        "title": "Change language",
+        "options": {
+          "en": "English",
+          "hr": "Croatian"
+        }
+      },
+      "camera": {
+        "title": "Camera"
+      },
+      "location": {
+        "title": "Location"
+      }
     }
+  },
+  "errors": {
+    "required": "This field is required."
   }
 }

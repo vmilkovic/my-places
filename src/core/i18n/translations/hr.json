@@ -7,13 +7,57 @@
   },
   "screens": {
     "signIn": {
-      "title": "Prijava"
+      "title": "Prijava",
+      "fields": {
+        "username": {
+          "label": "Koristničko ime",
+          "placeholder": "Unesite svoje korisničko ime"
+        },
+        "password": {
+          "label": "Lozinka",
+          "placeholder": "Unesite svoju lozinku"
+        }
+      },
+      "buttons": {
+        "singIn": "Prijavi",
+        "register": "Registriraj se"
+      }
     },
     "signUp": {
-      "title": "Registracija"
+      "title": "Registracija",
+      "fields": {
+        "username": {
+          "label": "Koristničko ime",
+          "placeholder": "Unesite svoje korisničko ime"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Unesite email"
+        },
+        "firstName": {
+          "label": "Ime",
+          "placeholder": "Unesite ime"
+        },
+        "lastName": {
+          "label": "Prezime",
+          "placeholder": "Unesite prezime"
+        },
+        "password": {
+          "label": "Lozinka",
+          "placeholder": "Unesite lozinku"
+        },
+        "repeatPassword": {
+          "label": "Ponovi lozinku",
+          "placeholder": "Ponovi lozinku"
+        }
+      },
+      "buttons": {
+        "singIn": "Prijavi",
+        "register": "Registriraj se"
+      }
     },
     "listPlaces": {
-      "title": "Sva Mjesta"
+      "title": "Mjesta"
     },
     "favoritePlaces": {
       "title": "Omiljena Mjesta"
@@ -27,11 +71,60 @@
     "editPlace": {
       "title": "Uredi Mjesto"
     },
-    "settings": {
-      "title": "Postavke"
-    },
     "profile": {
-      "title": "Profil"
+      "title": "Profil",
+      "fields": {
+        "username": {
+          "label": "Korisničko ime",
+          "placeholder": "Promjeni svoje korisničko ime"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Promjeni email"
+        },
+        "firstName": {
+          "label": "Ime",
+          "placeholder": "Promjeni ime"
+        },
+        "lastName": {
+          "label": "Prezime",
+          "placeholder": "Promjeni prezime"
+        },
+        "password": {
+          "label": "Lozinka",
+          "placeholder": "Unesite trenutnu lozinku"
+        },
+        "newPassword": {
+          "label": "Nova lozinka",
+          "placeholder": "Unesite novu lozinku"
+        },
+        "repeatNewPassword": {
+          "label": "Ponovite novu lozinku",
+          "placeholder": "Ponovite novu lozinku"
+        }
+      },
+      "buttons": {
+        "save": "Spremi"
+      }
+    },
+    "settings": {
+      "title": "Postavke",
+      "languages": {
+        "title": "Promjeni jezik",
+        "options": {
+          "en": "Engleski",
+          "hr": "Hrvatski"
+        }
+      },
+      "camera": {
+        "title": "Kamera"
+      },
+      "location": {
+        "title": "Lokacija"
+      }
     }
+  },
+  "errors": {
+    "required": "Obavezno polje."
   }
 }

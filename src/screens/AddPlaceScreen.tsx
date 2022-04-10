@@ -1,9 +1,22 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
+import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useFocusEffect } from '@react-navigation/native';
 
-const AddPlaceScreen = () => {
+import { setHeaderTitle, setRightHeader } from 'utils/helpers';
+
+import type { AddPlacesProps } from 'utils/types';
+
+const AddPlaceScreen = ({ navigation }: AddPlacesProps) => {
   const { t } = useTranslation();
+
+  useFocusEffect(
+    useCallback(() => {
+      setHeaderTitle(navigation, t('screens.addPlace.title'));
+      setRightHeader(navigation, () => <View />);
+    }, [navigation, t]),
+  );
 
   return (
     <View>

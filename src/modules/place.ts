@@ -1,4 +1,6 @@
-class Place {
+import { IPlace } from './../utils/interfaces';
+
+class Place implements IPlace {
   title: string;
   imageUri: string;
   address: string;

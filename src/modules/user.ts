@@ -1,4 +1,6 @@
-class User {
+import { IUser } from './../utils/interfaces';
+
+class User implements IUser {
   id: number;
   firstName: string;
   lastName: string;

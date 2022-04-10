@@ -3,12 +3,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 
 import SignInScreen from 'screens/SignInScreen';
-import SignUpScreen from 'screens/SignupScreen';
-import HeaderLogo from 'components/HeaderLogo';
-import { Colors } from 'assets';
+import SignUpScreen from 'screens/SignUpScreen';
 
 const AuthStackNavigator = createNativeStackNavigator();
-const { Primary: PrimaryColor } = Colors;
 
 const AuthNavigator = () => {
   const { t } = useTranslation();
@@ -17,14 +14,13 @@ const AuthNavigator = () => {
     <AuthStackNavigator.Navigator
       initialRouteName="SignIn"
       screenOptions={{
-        headerTintColor: PrimaryColor,
+        headerShown: false,
       }}>
       <AuthStackNavigator.Screen
         name="SignIn"
         component={SignInScreen}
         options={{
           title: t('screens.signIn.title'),
-          headerLeft: HeaderLogo,
         }}
       />
       <AuthStackNavigator.Screen
@@ -32,7 +28,6 @@ const AuthNavigator = () => {
         component={SignUpScreen}
         options={{
           title: t('screens.signUp.title'),
-          headerLeft: HeaderLogo,
         }}
       />
     </AuthStackNavigator.Navigator>
