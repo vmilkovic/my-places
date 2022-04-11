@@ -1,35 +1,64 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, Platform } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 
+import HeaderRight from 'components/HeaderRight';
+import { setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
+import Fonts from 'utils/fonts';
 
-const MapScreen = ({ navigation }) => {
+const MapScreen = ({ navigation, route }) => {
+  const { params } = route;
+  const { pickedLocation } = params;
+  const { latitude, longitude } = pickedLocation;
+
   const initialLocation = {
-    lat: 37.78,
-    lng: -122.43,
+    latitude: latitude,
+    longitude: longitude,
   };
   const readonly = false;
 
   const [selectedLocation, setSelectedLocation] = useState(initialLocation);
 
   const mapRegion = {
-    latitude: selectedLocation ? 37.78 : 37.78,
-    longitude: selectedLocation ? -122.43 : -122.43,
+    latitude: selectedLocation.latitude ? selectedLocation.latitude : latitude,
+    longitude: selectedLocation.longitude
+      ? selectedLocation.longitude
+      : longitude,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      setRightHeader(
+        navigation,
+        () => (
+          <HeaderRight
+            name="done"
+            color={Colors.Dark}
+            size={Fonts.size.HeaderIcon}
+            onPress={() =>
+              navigation.navigate('AddPlaceTab', { selectedLocation })
+            }
+          />
+        ),
+        true,
+      );
+    }, [navigation, selectedLocation]),
+  );
+
   const selectLocationHandler = (event: {
-    nativeEvent: { coordinate: { latitude: any; longitude: any } };
+    nativeEvent: { coordinate: { latitude: number; longitude: number } };
   }) => {
     if (readonly) {
       return;
     }
 
     setSelectedLocation({
-      lat: event.nativeEvent.coordinate.latitude,
-      lng: event.nativeEvent.coordinate.longitude,
+      latitude: event.nativeEvent.coordinate.latitude,
+      longitude: event.nativeEvent.coordinate.longitude,
     });
   };
 
@@ -37,8 +66,8 @@ const MapScreen = ({ navigation }) => {
 
   if (selectedLocation) {
     markerCoordinates = {
-      latitude: selectedLocation.lat,
-      longitude: selectedLocation.lng,
+      latitude: selectedLocation.latitude,
+      longitude: selectedLocation.longitude,
     };
   }
 

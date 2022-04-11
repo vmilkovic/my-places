@@ -19,39 +19,40 @@ const SettingsScreen = () => {
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
-      showsVerticalScrollIndicator={false}
-      style={styles.container}>
-      <View style={styles.divider}>
-        <Text style={styles.settingTitle}>
-          {t<string>('screens.settings.languages.title')}
-        </Text>
-        <Picker
-          selectedValue={selectedLanguage}
-          onValueChange={(itemValue, _) => {
-            setSelectedLanguage(itemValue);
-            i18n.changeLanguage(itemValue);
-          }}>
-          {SUPPORTED_LANGUAGES.map(lang => (
-            <Picker.Item
-              key={lang}
-              label={t<string>(`screens.settings.languages.options.${lang}`)}
-              value={lang}
-            />
-          ))}
-        </Picker>
-      </View>
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <View style={styles.divider}>
+          <Text style={styles.settingTitle}>
+            {t<string>('screens.settings.languages.title')}
+          </Text>
+          <Picker
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, _) => {
+              setSelectedLanguage(itemValue);
+              i18n.changeLanguage(itemValue);
+            }}>
+            {SUPPORTED_LANGUAGES.map(lang => (
+              <Picker.Item
+                key={lang}
+                label={t<string>(`screens.settings.languages.options.${lang}`)}
+                value={lang}
+              />
+            ))}
+          </Picker>
+        </View>
 
-      <View style={styles.divider}>
-        <Text style={styles.settingTitle}>
-          {t<string>('screens.settings.appOptions.title')}
-        </Text>
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            mode="outlined"
-            color={Colors.Primary}
-            title={t<string>('screens.settings.appOptions.button')}
-            onPress={openAppSettings}
-          />
+        <View style={styles.divider}>
+          <Text style={styles.settingTitle}>
+            {t<string>('screens.settings.appOptions.title')}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              mode="outlined"
+              color={Colors.Primary}
+              title={t<string>('screens.settings.appOptions.button')}
+              onPress={openAppSettings}
+            />
+          </View>
         </View>
       </View>
     </ScrollView>

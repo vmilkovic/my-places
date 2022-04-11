@@ -1,48 +1,55 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Button,
-  Text,
-  ActivityIndicator,
-  Alert,
-  StyleSheet,
-  PermissionsAndroid,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ActivityIndicator, Alert, StyleSheet } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
 
+import { getLocationAddress, requestLocationPermissions } from 'utils/helpers';
 import Colors from 'utils/colors';
 import MapPreview from './MapPreview';
+import CustomButton from './CustomButton';
 
-const LocationPicker = (props: { onLocationPicked: any; navigation: any }) => {
+const LocationPicker = (props: {
+  onLocationPicked: (location: Object) => void;
+  mapPickedLocation: any;
+  navigation: Object;
+}) => {
+  const { onLocationPicked, navigation, mapPickedLocation } = props;
+
   const [isFetching, setIsFetching] = useState(false);
   const [pickedLocation, setPickedLocation] = useState();
 
-  const { onLocationPicked, navigation } = props;
+  useEffect(() => {
+    getLocationHandler();
+  }, []);
 
-  const verifyPermissions = async () => {
-    const result = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-    );
-
-    if (result !== PermissionsAndroid.RESULTS.GRANTED) {
-      Alert.alert(
-        'Insufficient permissions!',
-        'You need to grant location permissions to use this app.',
-        [{ text: 'Okay' }],
-      );
-      return false;
-    }
-
-    return true;
-  };
+  useEffect(() => {
+    setPickedLocation(mapPickedLocation);
+    onLocationPicked(mapPickedLocation);
+  }, [mapPickedLocation, onLocationPicked, setPickedLocation]);
 
   const getLocationHandler = async () => {
-    const hasPermission = await verifyPermissions();
+    const hasPermission = await requestLocationPermissions();
     if (!hasPermission) {
       return;
     }
 
     try {
       setIsFetching(true);
+
+      Geolocation.getCurrentPosition(
+        async position => {
+          const { coords } = position;
+          const { latitude, longitude } = coords;
+
+          const address = await getLocationAddress(coords);
+
+          setPickedLocation({ latitude, longitude, address });
+          onLocationPicked({ latitude, longitude, address });
+        },
+        error => {
+          console.log(error.code, error.message);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+      );
     } catch (err) {
       Alert.alert(
         'Could not fetch location!',
@@ -55,7 +62,7 @@ const LocationPicker = (props: { onLocationPicked: any; navigation: any }) => {
   };
 
   const pickOnMapHanlder = () => {
-    navigation.navigate('Map');
+    navigation.navigate('Map', { pickedLocation });
   };
 
   return (
@@ -71,14 +78,14 @@ const LocationPicker = (props: { onLocationPicked: any; navigation: any }) => {
         )}
       </MapPreview>
       <View style={styles.actions}>
-        <Button
+        <CustomButton
+          style={styles.button}
           title="Get User Location"
-          color={Colors.Primary}
           onPress={getLocationHandler}
         />
-        <Button
+        <CustomButton
+          style={styles.button}
           title="Pick on Map"
-          color={Colors.Primary}
           onPress={pickOnMapHanlder}
         />
       </View>
@@ -98,9 +105,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   actions: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    alignSelf: 'center',
+  },
+  button: {
+    marginVertical: 2.5,
   },
 });
 

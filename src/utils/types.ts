@@ -36,6 +36,7 @@ export type CustomButtonProps = {
   icon?: string;
   color?: string;
   mode?: 'text' | 'outlined' | 'contained';
+  style?: Object;
   title: string;
   onPress: () => any;
 };
@@ -43,6 +44,15 @@ export type CustomButtonProps = {
 export type TouchableImageProps = {
   onPress: () => void;
   source: _SourceUri;
-  imageContainerStyle: StyleSheetProperties;
-  imageStyle: StyleSheetProperties;
+  imageContainerStyle?: StyleSheetProperties;
+  imageStyle?: StyleSheetProperties;
+};
+
+export type PickerImage = {
+  width: number;
+  height: number;
+  fileName: string;
+  fileSize: number;
+  type: string;
+  uri: _SourceUri;
 };

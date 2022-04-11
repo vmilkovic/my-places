@@ -3,11 +3,13 @@ import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 import { GOOGLE_MAPS_API_KEY } from '@env';
 
+import { GOOGLE_STATIC_MAP_URL } from 'utils/constants';
+
 const MapPreview = (props: any) => {
   let imagePreviewUrl;
 
   if (props.location) {
-    imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.lat},${props.location.lng}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:A%7C${props.location.lat},${props.location.lng}&key=${GOOGLE_MAPS_API_KEY}`;
+    imagePreviewUrl = `${GOOGLE_STATIC_MAP_URL}?center=${props.location.latitude},${props.location.longitude}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:A%7C${props.location.latitude},${props.location.longitude}&key=${GOOGLE_MAPS_API_KEY}`;
   }
 
   return (

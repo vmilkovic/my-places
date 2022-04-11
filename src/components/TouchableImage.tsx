@@ -21,26 +21,30 @@ const TouchableImage = (props: TouchableImageProps) => {
   }
 
   return (
-    <TouchableComponent onPress={onPress}>
-      <View style={{ ...styles.imageContainer, ...imageContainerStyle }}>
-        <Image style={{ ...styles.image, ...imageStyle }} source={source} />
-      </View>
-    </TouchableComponent>
+    <View style={styles.touchable}>
+      <TouchableComponent onPress={onPress}>
+        <View style={{ ...styles.imageContainer, ...imageContainerStyle }}>
+          <Image style={{ ...styles.image, ...imageStyle }} source={source} />
+        </View>
+      </TouchableComponent>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    borderWidth: 1,
+  touchable: {
     borderColor: Colors.Accent,
     borderRadius: 20,
+    borderWidth: 1,
+    overflow: 'hidden',
+  },
+  imageContainer: {
     backgroundColor: Colors.Surface,
-    width: '100%',
+    overflow: 'hidden',
   },
   image: {
     width: '100%',
     height: 300,
-    resizeMode: 'center',
   },
 });
 

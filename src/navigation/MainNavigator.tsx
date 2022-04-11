@@ -63,7 +63,14 @@ const MainNavigator = () => {
           headerLeft: HeaderLogo,
         }}
       />
-      <MainStackNavigator.Screen name="Map" component={MapScreen} />
+      <MainStackNavigator.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          title: t('screens.map.title'),
+          headerLeft: HeaderLogo,
+        }}
+      />
     </MainStackNavigator.Navigator>
   );
 };

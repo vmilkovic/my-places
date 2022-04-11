@@ -52,133 +52,134 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
-      showsVerticalScrollIndicator={false}
-      style={styles.container}>
-      <View style={styles.formContainer}>
-        <View style={styles.inputContainer}>
-          <InputController
-            disabled
-            control={control}
-            rules={{
-              required: true,
-            }}
-            name="username"
-            label={t('screens.signUp.fields.username.label')}
-            placeholder={t('screens.signUp.fields.username.placeholder')}
-          />
-          {errors.username && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="email"
-            label={t('screens.profile.fields.email.label')}
-            placeholder={t('screens.profile.fields.email.placeholder')}
-          />
-          {errors.email && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="firstName"
-            label={t('screens.profile.fields.firstName.label')}
-            placeholder={t('screens.profile.fields.firstName.placeholder')}
-          />
-          {errors.firstName && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="lastName"
-            label={t('screens.profile.fields.lastName.label')}
-            placeholder={t('screens.profile.fields.lastName.placeholder')}
-          />
-          {errors.lastName && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            secureTextEntry
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="currentPassword"
-            label={t('screens.profile.fields.password.label')}
-            placeholder={t('screens.profile.fields.password.placeholder')}
-          />
-          {errors.currentPassword && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            secureTextEntry
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="newPassword"
-            label={t('screens.profile.fields.newPassword.label')}
-            placeholder={t('screens.profile.fields.newPassword.placeholder')}
-          />
-          {errors.newPassword && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <InputController
-            secureTextEntry
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 25,
-            }}
-            name="repeatPassword"
-            label={t('screens.profile.fields.repeatNewPassword.label')}
-            placeholder={t(
-              'screens.profile.fields.repeatNewPassword.placeholder',
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <View style={styles.formContainer}>
+          <View style={styles.inputContainer}>
+            <InputController
+              disabled
+              control={control}
+              rules={{
+                required: true,
+              }}
+              name="username"
+              label={t('screens.signUp.fields.username.label')}
+              placeholder={t('screens.signUp.fields.username.placeholder')}
+            />
+            {errors.username && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
             )}
-          />
-          {errors.repeatNewPassword && (
-            <Text style={styles.error}>{t<string>('errors.required')}</Text>
-          )}
-        </View>
-      </View>
+          </View>
 
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <CustomButton
-            onPress={handleSubmit(onSubmit)}
-            title={t('screens.profile.buttons.submit')}
-          />
+          <View style={styles.inputContainer}>
+            <InputController
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="email"
+              label={t('screens.profile.fields.email.label')}
+              placeholder={t('screens.profile.fields.email.placeholder')}
+            />
+            {errors.email && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputContainer}>
+            <InputController
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="firstName"
+              label={t('screens.profile.fields.firstName.label')}
+              placeholder={t('screens.profile.fields.firstName.placeholder')}
+            />
+            {errors.firstName && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputContainer}>
+            <InputController
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="lastName"
+              label={t('screens.profile.fields.lastName.label')}
+              placeholder={t('screens.profile.fields.lastName.placeholder')}
+            />
+            {errors.lastName && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputContainer}>
+            <InputController
+              secureTextEntry
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="currentPassword"
+              label={t('screens.profile.fields.password.label')}
+              placeholder={t('screens.profile.fields.password.placeholder')}
+            />
+            {errors.currentPassword && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputContainer}>
+            <InputController
+              secureTextEntry
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="newPassword"
+              label={t('screens.profile.fields.newPassword.label')}
+              placeholder={t('screens.profile.fields.newPassword.placeholder')}
+            />
+            {errors.newPassword && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+
+          <View style={styles.inputContainer}>
+            <InputController
+              secureTextEntry
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 25,
+              }}
+              name="repeatPassword"
+              label={t('screens.profile.fields.repeatNewPassword.label')}
+              placeholder={t(
+                'screens.profile.fields.repeatNewPassword.placeholder',
+              )}
+            />
+            {errors.repeatNewPassword && (
+              <Text style={styles.error}>{t<string>('errors.required')}</Text>
+            )}
+          </View>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <CustomButton
+              onPress={handleSubmit(onSubmit)}
+              title={t('screens.profile.buttons.submit')}
+            />
+          </View>
         </View>
       </View>
     </ScrollView>

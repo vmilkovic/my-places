@@ -68,22 +68,27 @@
         "image": {
           "title": "Slika"
         },
-        "map": {
+        "location": {
           "title": "Lokacija"
         }
       },
       "fields": {
         "title": {
-          "label": "Naziv mjesta",
+          "label": "Naziv",
           "placeholder": "Unesite naziv mjesta"
         },
+        "address": {
+          "label": "Adresa",
+          "placeholder": "Unesite adresu mjesta"
+        },
         "description": {
-          "label": "Opis mjesta",
+          "label": "Opis",
           "placeholder": "Unesite opis mjesta"
         }
       },
       "buttons": {
-        "submit": "Spremi"
+        "submit": "Spremi",
+        "camera": "Kamera"
       }
     },
     "placeDetail": {
@@ -91,6 +96,9 @@
     },
     "editPlace": {
       "title": "Uredi Mjesto"
+    },
+    "map": {
+      "title": "Odaberite lokaciju"
     },
     "profile": {
       "title": "Profil",

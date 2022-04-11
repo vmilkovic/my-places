@@ -35,11 +35,11 @@
           "placeholder": "Enter your email"
         },
         "firstName": {
-          "label": "Fist Name",
+          "label": "Fist name",
           "placeholder": "Enter your first name"
         },
         "lastName": {
-          "label": "Last Name",
+          "label": "Last name",
           "placeholder": "Enter your last name"
         },
         "password": {
@@ -68,22 +68,27 @@
         "image": {
           "title": "Image"
         },
-        "map": {
+        "location": {
           "title": "Location"
         }
       },
       "fields": {
         "title": {
-          "label": "Place title",
+          "label": "Title",
           "placeholder": "Enter place title"
         },
+        "address": {
+          "label": "Adress",
+          "placeholder": "Enter place address"
+        },
         "description": {
-          "label": "Place description",
+          "label": "Description",
           "placeholder": "Enter place description"
         }
       },
       "buttons": {
-        "submit": "Save"
+        "submit": "Save",
+        "camera": "Camera"
       }
     },
     "placeDetail": {
@@ -91,6 +96,9 @@
     },
     "editPlace": {
       "title": "Edit Place"
+    },
+    "map": {
+      "title": "Select location"
     },
     "profile": {
       "title": "Profile",
@@ -104,23 +112,23 @@
           "placeholder": "Change your email"
         },
         "firstName": {
-          "label": "Fist Name",
+          "label": "Fist name",
           "placeholder": "Change your first name"
         },
         "lastName": {
-          "label": "Last Name",
+          "label": "Last name",
           "placeholder": "Change your last name"
         },
         "password": {
-          "label": "Current Password",
+          "label": "Current password",
           "placeholder": "Enter your current password"
         },
         "newPassword": {
-          "label": "New Password",
+          "label": "New password",
           "placeholder": "New your password"
         },
         "repeatNewPassword": {
-          "label": "Repeat new Password",
+          "label": "Repeat new password",
           "placeholder": "Repeat new password"
         }
       },
