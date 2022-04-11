@@ -3,11 +3,17 @@ import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
 import InputController from 'components/InputController';
+import { loginUser } from 'store/user';
 import Colors from 'utils/colors';
 import CustomButton from 'components/CustomButton';
 
+import { IUser } from 'utils/interfaces';
+
 const SignInScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const {
@@ -21,7 +27,7 @@ const SignInScreen = ({ navigation }) => {
     },
   });
 
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = (userData: IUser) => dispatch(loginUser(userData));
 
   return (
     <ScrollView

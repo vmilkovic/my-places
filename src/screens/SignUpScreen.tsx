@@ -3,11 +3,17 @@ import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
 import InputController from 'components/InputController';
 import Colors from 'utils/colors';
 import CustomButton from 'components/CustomButton';
+import { registerUser } from '../store/user';
+
+import { IUser } from 'utils/interfaces';
 
 const SignUpScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const {
@@ -25,7 +31,9 @@ const SignUpScreen = ({ navigation }) => {
     },
   });
 
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = (userData: IUser) => {
+    dispatch(registerUser(userData));
+  };
 
   return (
     <ScrollView
@@ -75,11 +83,11 @@ const SignUpScreen = ({ navigation }) => {
                 required: true,
                 maxLength: 25,
               }}
-              name="email"
+              name="firstName"
               label={t('screens.signUp.fields.firstName.label')}
               placeholder={t('screens.signUp.fields.firstName.placeholder')}
             />
-            {errors.email && (
+            {errors.firstName && (
               <Text style={styles.error}>{t<string>('errors.required')}</Text>
             )}
           </View>

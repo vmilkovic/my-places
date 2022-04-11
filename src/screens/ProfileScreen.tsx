@@ -4,17 +4,24 @@ import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
+import { RootState } from '../store';
+import { useSelector, useDispatch } from 'react-redux';
 
 import InputController from 'components/InputController';
 import CustomButton from 'components/CustomButton';
 import HeaderRight from 'components/HeaderRight';
 import { setHeaderTitle, setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
+import { updateUser } from 'store/user';
 import Fonts from 'utils/fonts';
 
 import type { ProfileProps } from 'utils/types';
+import { IUser } from 'utils/interfaces';
 
 const ProfileScreen = ({ navigation }: ProfileProps) => {
+  const dispatch = useDispatch();
+  const user: IUser = useSelector((state: RootState) => state.user);
+  const { id, username, firstName, lastName, email } = user;
   const { t } = useTranslation();
 
   useFocusEffect(
@@ -37,17 +44,19 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      username: 'Milky',
-      email: '',
+      firstName,
+      lastName,
+      username,
+      email,
       currentPassword: '',
       newPassword: '',
       repeatNewPassword: '',
     },
   });
 
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = (userData: IUser) => {
+    dispatch(updateUser({ ...userData, id }));
+  };
 
   return (
     <ScrollView
@@ -76,7 +85,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="email"
               label={t('screens.profile.fields.email.label')}
@@ -92,7 +100,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="firstName"
               label={t('screens.profile.fields.firstName.label')}
@@ -108,7 +115,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="lastName"
               label={t('screens.profile.fields.lastName.label')}
@@ -125,7 +131,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="currentPassword"
               label={t('screens.profile.fields.password.label')}
@@ -142,7 +147,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="newPassword"
               label={t('screens.profile.fields.newPassword.label')}
@@ -159,7 +163,6 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               control={control}
               rules={{
                 required: true,
-                maxLength: 25,
               }}
               name="repeatPassword"
               label={t('screens.profile.fields.repeatNewPassword.label')}

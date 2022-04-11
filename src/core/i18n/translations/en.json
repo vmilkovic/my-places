@@ -148,9 +148,26 @@
       "appOptions": {
         "title": "About application",
         "button": "Show options"
+      },
+      "logout": {
+        "button": "Log out"
       }
     }
   },
+  "components": {
+    "locationPicker": {
+      "locationDisabled": {
+        "title": "Could not fetch location!",
+        "descirpiton": "Please try again later or pick a location on the map.",
+        "button": "Ok"
+      },
+      "buttons": {
+        "userLocation": "Get user location",
+        "map": "Pick on map"
+      }
+    }
+  },
+  "permissions": {},
   "errors": {
     "required": "This field is required."
   }

@@ -3,12 +3,17 @@ import { Picker } from '@react-native-picker/picker';
 import { ScrollView, StyleSheet, View, Linking } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
 import { SUPPORTED_LANGUAGES } from 'utils/constants';
+
+import { logoutUser, changeLanguage } from '../store/user';
 import CustomButton from 'components/CustomButton';
 import Colors from 'utils/colors';
+import { SupportedLanguages } from 'utils/types';
 
 const SettingsScreen = () => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
@@ -27,15 +32,17 @@ const SettingsScreen = () => {
           </Text>
           <Picker
             selectedValue={selectedLanguage}
-            onValueChange={(itemValue, _) => {
-              setSelectedLanguage(itemValue);
-              i18n.changeLanguage(itemValue);
+            onValueChange={(language: SupportedLanguages, _) => {
+              setSelectedLanguage(language);
+              dispatch(changeLanguage(language));
             }}>
-            {SUPPORTED_LANGUAGES.map(lang => (
+            {SUPPORTED_LANGUAGES.map(language => (
               <Picker.Item
-                key={lang}
-                label={t<string>(`screens.settings.languages.options.${lang}`)}
-                value={lang}
+                key={language}
+                label={t<string>(
+                  `screens.settings.languages.options.${language}`,
+                )}
+                value={language}
               />
             ))}
           </Picker>
@@ -51,6 +58,17 @@ const SettingsScreen = () => {
               color={Colors.Primary}
               title={t<string>('screens.settings.appOptions.button')}
               onPress={openAppSettings}
+            />
+          </View>
+        </View>
+
+        <View style={styles.divider}>
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              mode="outlined"
+              color={Colors.Primary}
+              title={t<string>('screens.settings.logout.button')}
+              onPress={() => dispatch(logoutUser())}
             />
           </View>
         </View>

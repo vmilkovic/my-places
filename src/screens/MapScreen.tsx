@@ -7,19 +7,21 @@ import HeaderRight from 'components/HeaderRight';
 import { setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
 import Fonts from 'utils/fonts';
+import { Location } from 'utils/types';
 
 const MapScreen = ({ navigation, route }) => {
   const { params } = route;
   const { pickedLocation } = params;
   const { latitude, longitude } = pickedLocation;
 
-  const initialLocation = {
+  const initialLocation: Location = {
     latitude: latitude,
     longitude: longitude,
   };
   const readonly = false;
 
-  const [selectedLocation, setSelectedLocation] = useState(initialLocation);
+  const [selectedLocation, setSelectedLocation] =
+    useState<Location>(initialLocation);
 
   const mapRegion = {
     latitude: selectedLocation.latitude ? selectedLocation.latitude : latitude,

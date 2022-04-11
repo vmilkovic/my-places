@@ -1,19 +1,24 @@
-import { PickerImage, GeolocationCoordiates } from './types';
+import { PickerImage, SupportedLanguages } from './types';
 export interface IUser {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   username: string;
   email: string;
+  password?: string;
+  language?: SupportedLanguages;
 }
 
 export interface IPlace {
+  id?: number;
   title: string;
   description: string;
   imageUri: string;
   address: string;
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
+  isFavorite: boolean;
+  userId: number;
 }
 
 export interface ImagePickerResponse {

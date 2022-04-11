@@ -4,6 +4,7 @@ import { GOOGLE_MAPS_API_KEY } from '@env';
 import { GOOGLE_GEOCODE_API_URL } from './constants';
 
 import type { NavigationProp } from '@react-navigation/native';
+import { Location } from './types';
 
 export const setHeaderTitle = (
   navigation: NavigationProp<{}>,
@@ -60,7 +61,7 @@ export const requestLocationPermissions = async () => {
   return true;
 };
 
-export const getLocationAddress = async location => {
+export const getLocationAddress = async (location: Location) => {
   const response = await fetch(
     `${GOOGLE_GEOCODE_API_URL}?latlng=${location.latitude},${location.longitude}&key=${GOOGLE_MAPS_API_KEY}`,
   );

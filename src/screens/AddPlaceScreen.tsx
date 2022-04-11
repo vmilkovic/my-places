@@ -53,8 +53,8 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
       description: '',
       imageUri: '',
       address: '',
-      lat: null,
-      lng: null,
+      latitude: null,
+      longitude: null,
     },
   });
 
@@ -91,8 +91,8 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
 
     const { latitude, longitude, address } = selectedLocation;
 
-    setValue('lat', latitude, { shouldValidate: true });
-    setValue('lng', longitude, { shouldValidate: true });
+    setValue('latitude', latitude, { shouldValidate: true });
+    setValue('longitude', longitude, { shouldValidate: true });
     setValue('address', address, { shouldValidate: true });
   }, [selectedLocation, setValue]);
 

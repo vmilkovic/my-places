@@ -56,3 +56,11 @@ export type PickerImage = {
   type: string;
   uri: _SourceUri;
 };
+
+export type Location = {
+  latitude: number;
+  longitude: number;
+  address?: string;
+};
+
+export type SupportedLanguages = 'en' | 'hr';

@@ -10,7 +10,7 @@
       "title": "Prijava",
       "fields": {
         "username": {
-          "label": "Koristničko ime",
+          "label": "Korisničko ime",
           "placeholder": "Unesite svoje korisničko ime"
         },
         "password": {
@@ -148,6 +148,22 @@
       "appOptions": {
         "title": "O aplikaciji",
         "button": "Prikaži opcije"
+      },
+      "logout": {
+        "button": "Odjavi se"
+      }
+    }
+  },
+  "components": {
+    "locationPicker": {
+      "locationDisabled": {
+        "title": "Ne može se dohvatit lokacija!",
+        "descirpiton": "Molimo pokušajte kasnije ili odaberite lokaciju na karti.",
+        "button": "Ok"
+      },
+      "buttons": {
+        "userLocation": "Moja lokacija",
+        "map": "Odaberi na karti"
       }
     }
   },

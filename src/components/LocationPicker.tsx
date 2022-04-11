@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator, Alert, StyleSheet } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
+import { useTranslation } from 'react-i18next';
 
 import { getLocationAddress, requestLocationPermissions } from 'utils/helpers';
 import Colors from 'utils/colors';
 import MapPreview from './MapPreview';
 import CustomButton from './CustomButton';
+import { Location } from 'utils/types';
 
 const LocationPicker = (props: {
-  onLocationPicked: (location: Object) => void;
+  onLocationPicked: (location: Location) => void;
   mapPickedLocation: any;
   navigation: Object;
 }) => {
   const { onLocationPicked, navigation, mapPickedLocation } = props;
 
   const [isFetching, setIsFetching] = useState(false);
-  const [pickedLocation, setPickedLocation] = useState();
+  const [pickedLocation, setPickedLocation] = useState<Location>();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getLocationHandler();
@@ -52,9 +56,15 @@ const LocationPicker = (props: {
       );
     } catch (err) {
       Alert.alert(
-        'Could not fetch location!',
-        'Please try again later or pick a location on the map.',
-        [{ text: 'Okay' }],
+        t<string>('components.locationPicker.locationDisabled.title'),
+        t<string>('components.locationPicker.locationDisabled.description'),
+        [
+          {
+            text: t<string>(
+              'components.locationPicker.locationDisabled.button',
+            ),
+          },
+        ],
       );
     }
 
@@ -80,12 +90,12 @@ const LocationPicker = (props: {
       <View style={styles.actions}>
         <CustomButton
           style={styles.button}
-          title="Get User Location"
+          title={t<string>('components.locationPicker.buttons.userLocation')}
           onPress={getLocationHandler}
         />
         <CustomButton
           style={styles.button}
-          title="Pick on Map"
+          title={t<string>('components.locationPicker.buttons.map')}
           onPress={pickOnMapHanlder}
         />
       </View>
