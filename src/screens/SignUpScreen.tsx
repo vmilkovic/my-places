@@ -5,16 +5,16 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
+import { createUser } from 'store/actions/users';
 import InputController from 'components/InputController';
-import Colors from 'utils/colors';
 import CustomButton from 'components/CustomButton';
-import { registerUser } from '../store/user';
+import Colors from 'utils/colors';
 
-import { IUser } from 'utils/interfaces';
+import User from 'modules/user';
 
 const SignUpScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const {
     control,
@@ -28,11 +28,12 @@ const SignUpScreen = ({ navigation }) => {
       email: '',
       password: '',
       repeatPassword: '',
+      language: i18n.language,
     },
   });
 
-  const onSubmit = (userData: IUser) => {
-    dispatch(registerUser(userData));
+  const onSubmit = (userData: User) => {
+    dispatch(createUser(userData));
   };
 
   return (

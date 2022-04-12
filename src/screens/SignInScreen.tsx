@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
+import { loginUser } from 'store/actions/users';
 import InputController from 'components/InputController';
-import { loginUser } from 'store/user';
 import Colors from 'utils/colors';
 import CustomButton from 'components/CustomButton';
 
-import { IUser } from 'utils/interfaces';
+import User from 'modules/user';
 
 const SignInScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -27,7 +27,10 @@ const SignInScreen = ({ navigation }) => {
     },
   });
 
-  const onSubmit = (userData: IUser) => dispatch(loginUser(userData));
+  const onSubmit = (userData: User) => {
+    const { username, password } = userData;
+    dispatch(loginUser(username, password));
+  };
 
   return (
     <ScrollView

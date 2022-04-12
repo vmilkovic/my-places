@@ -4,23 +4,22 @@ import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import { RootState } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { updateUser } from 'store/actions/users';
 import InputController from 'components/InputController';
 import CustomButton from 'components/CustomButton';
 import HeaderRight from 'components/HeaderRight';
 import { setHeaderTitle, setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
-import { updateUser } from 'store/user';
 import Fonts from 'utils/fonts';
 
 import type { ProfileProps } from 'utils/types';
-import { IUser } from 'utils/interfaces';
+import User from 'modules/user';
 
 const ProfileScreen = ({ navigation }: ProfileProps) => {
   const dispatch = useDispatch();
-  const user: IUser = useSelector((state: RootState) => state.user);
+  const user: User = useSelector(state => state.user);
   const { id, username, firstName, lastName, email } = user;
   const { t } = useTranslation();
 
@@ -54,8 +53,8 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
     },
   });
 
-  const onSubmit = (userData: IUser) => {
-    dispatch(updateUser({ ...userData, id }));
+  const onSubmit = (userData: User) => {
+    dispatch(updateUser({ ...userData, language: user.language, id }));
   };
 
   return (
@@ -164,7 +163,7 @@ const ProfileScreen = ({ navigation }: ProfileProps) => {
               rules={{
                 required: true,
               }}
-              name="repeatPassword"
+              name="repeatNewPassword"
               label={t('screens.profile.fields.repeatNewPassword.label')}
               placeholder={t(
                 'screens.profile.fields.repeatNewPassword.placeholder',

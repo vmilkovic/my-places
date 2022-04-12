@@ -3,19 +3,22 @@ import { Picker } from '@react-native-picker/picker';
 import { ScrollView, StyleSheet, View, Linking } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { SUPPORTED_LANGUAGES } from 'utils/constants';
 
-import { logoutUser, changeLanguage } from '../store/user';
+import { logoutUser } from 'store/actions/users';
 import CustomButton from 'components/CustomButton';
 import Colors from 'utils/colors';
 import { SupportedLanguages } from 'utils/types';
+import User from 'modules/user';
+import { updateLanguage } from 'store/actions/users';
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+  const user: User = useSelector(state => state.user);
 
   const openAppSettings = useCallback(async () => {
     await Linking.openSettings();
@@ -34,7 +37,7 @@ const SettingsScreen = () => {
             selectedValue={selectedLanguage}
             onValueChange={(language: SupportedLanguages, _) => {
               setSelectedLanguage(language);
-              dispatch(changeLanguage(language));
+              dispatch(updateLanguage(user.id, language));
             }}>
             {SUPPORTED_LANGUAGES.map(language => (
               <Picker.Item

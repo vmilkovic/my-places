@@ -1,11 +1,11 @@
 import React from 'react';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
-
-import AppNavigator from 'navigation/AppNavigator';
-import { store } from 'store';
+import store from 'store';
 import 'core/i18n';
 
+import AppNavigator from 'navigation/AppNavigator';
+import { databaseInit } from 'core/db';
 import Colors from 'utils/colors';
 
 const theme = {
@@ -19,6 +19,14 @@ const theme = {
     text: Colors.Text,
   },
 };
+
+databaseInit()
+  .then(() => {
+    console.info('Intializing database...');
+  })
+  .catch(error => {
+    console.error('Initializing database failed: ' + error);
+  });
 
 const App = () => {
   return (

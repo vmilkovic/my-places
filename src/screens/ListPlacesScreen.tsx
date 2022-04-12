@@ -25,7 +25,7 @@ const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
           onPress={() => navigation.navigate('FavoritePlaces')}
         />
       ));
-    }, [navigation]),
+    }, [navigation, t]),
   );
 
   return (

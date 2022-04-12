@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './user';
-import placeReducer from './place';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import ReduxThunk from 'redux-thunk';
 
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    place: placeReducer,
-  },
+import userReducer from 'store/reducers/user';
+import placesReducer from 'store/reducers/places';
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  places: placesReducer,
 });
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+const middlewares = applyMiddleware(ReduxThunk);
+
+const store = createStore(rootReducer, composeWithDevTools(middlewares));
+
+export default store;
