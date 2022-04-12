@@ -150,7 +150,10 @@
       }
     },
     "map": {
-      "title": "Select location"
+      "title": "Select location",
+      "marker": {
+        "title": "Picked location"
+      }
     },
     "profile": {
       "title": "Profile",
@@ -213,14 +216,29 @@
         "descirpiton": "Please try again later or pick a location on the map.",
         "button": "Ok"
       },
+      "location": {
+        "notChosen": "No location chosen yet!"
+      },
       "buttons": {
         "userLocation": "Get user location",
         "map": "Pick on map"
       }
     }
   },
-  "permissions": {},
+  "permissions": {
+    "camera": {
+      "title": "Insufficient permissions!",
+      "description": "You need to grant camera permissions to use this app.",
+      "button": "Ok"
+    },
+    "location": {
+      "title": "Insufficient permissions!",
+      "description": "You need to grant location permissions to use this app.",
+      "button": "Ok"
+    }
+  },
   "errors": {
-    "required": "This field is required."
+    "required": "This field is required.",
+    "locationAddress": "Something went wrong!"
   }
 }

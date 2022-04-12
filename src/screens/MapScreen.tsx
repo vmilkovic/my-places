@@ -2,12 +2,14 @@ import React, { useCallback, useState } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
+import { t } from 'i18next';
 
 import HeaderRight from 'components/HeaderRight';
 import { setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
 import Fonts from 'utils/fonts';
 import { Location } from 'utils/types';
+import { useTranslation } from 'react-i18next';
 
 const MapScreen = ({ navigation, route }) => {
   const { params } = route;
@@ -30,6 +32,8 @@ const MapScreen = ({ navigation, route }) => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
+
+  const { t } = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -79,7 +83,16 @@ const MapScreen = ({ navigation, route }) => {
       region={mapRegion}
       onPress={selectLocationHandler}>
       {markerCoordinates && (
-        <Marker title="Picked Location" coordinate={markerCoordinates} />
+        <Marker
+          title={
+            t<string>('screens.map.marker.title') +
+            ' - Lat: ' +
+            markerCoordinates.latitude +
+            ' Lng: ' +
+            markerCoordinates.longitude
+          }
+          coordinate={markerCoordinates}
+        />
       )}
     </MapView>
   );

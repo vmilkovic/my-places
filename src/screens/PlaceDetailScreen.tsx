@@ -93,6 +93,7 @@ const PlaceDetailScreen = ({ navigation, route }: ListPlacesProps) => {
                   ? { uri: imageUri }
                   : require('../assets/images/placeholder-image.png')
               }
+              onPress={() => {}}
             />
           </View>
 

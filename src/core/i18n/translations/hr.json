@@ -150,7 +150,10 @@
       }
     },
     "map": {
-      "title": "Odaberite lokaciju"
+      "title": "Odaberite lokaciju",
+      "marker": {
+        "title": "Odabrana lokacija"
+      }
     },
     "profile": {
       "title": "Profil",
@@ -213,13 +216,29 @@
         "descirpiton": "Molimo pokušajte kasnije ili odaberite lokaciju na karti.",
         "button": "Ok"
       },
+      "location": {
+        "notChosen": "Lokacija nije odabrana!"
+      },
       "buttons": {
-        "userLocation": "Moja lokacija",
+        "userLocation": "Trenutna lokacija",
         "map": "Odaberi na karti"
       }
     }
   },
+  "permissions": {
+    "camera": {
+      "title": "Nedovoljna dopuštenja!",
+      "description": "Za korištenje ove aplikacije morate dati dopuštenja za kameru.",
+      "button": "Ok"
+    },
+    "location": {
+      "title": "Nedovoljna dopuštenja!",
+      "description": "Za korištenje ove aplikacije morate dati dopuštenja za lokaciju.",
+      "button": "Ok"
+    }
+  },
   "errors": {
-    "required": "Obavezno polje."
+    "required": "Obavezno polje.",
+    "locationAddress": "Nešto je pošlo po zlu!"
   }
 }

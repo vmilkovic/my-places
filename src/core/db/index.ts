@@ -214,12 +214,31 @@ export const changePlace = (place: Place) => {
   return promise;
 };
 
-export const fetchPlaces = () => {
+export const fetchPlaces = (userId: number) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
-        'SELECT * FROM places;',
-        [],
+        'SELECT * FROM places WHERE userId=?;',
+        [userId],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        },
+      );
+    });
+  });
+
+  return promise;
+};
+
+export const fetchFavoritePlaces = (userId: number) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'SELECT * FROM places WHERE isFavorite=1 AND userId=?;',
+        [userId],
         (_, result) => {
           resolve(result);
         },

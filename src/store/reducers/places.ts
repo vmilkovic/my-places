@@ -1,5 +1,10 @@
 import Place from 'modules/place';
-import { ADD_PLACE, LOAD_PLACES, UPDATE_PLACE } from 'utils/constants';
+import {
+  ADD_PLACE,
+  LOAD_FAVORITE_PLACES,
+  LOAD_PLACES,
+  UPDATE_PLACE,
+} from 'utils/constants';
 
 const initialState = {
   list: [],
@@ -38,6 +43,12 @@ export default (state = initialState, actions) => {
       return {
         ...state,
         list: newList,
+      };
+    case LOAD_FAVORITE_PLACES:
+      const { favoritePlaces } = actions;
+      return {
+        ...state,
+        favorites: favoritePlaces,
       };
     default:
       return state;

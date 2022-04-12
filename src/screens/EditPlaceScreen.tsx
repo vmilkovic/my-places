@@ -79,6 +79,7 @@ const EditPlaceScreen = ({ navigation, route }) => {
       address,
       latitude,
       longitude,
+      isFavorite,
     },
   });
 
@@ -90,6 +91,7 @@ const EditPlaceScreen = ({ navigation, route }) => {
     resetField('address');
     resetField('latitude');
     resetField('longitude');
+    resetField('isFavorite');
     setSelectedImage(null);
     navigation.navigate('PlacesListTab');
   };
@@ -109,7 +111,7 @@ const EditPlaceScreen = ({ navigation, route }) => {
         ),
         true,
       );
-    }, [navigation, t]),
+    }, [navigation, t, placeIsFavorite]),
   );
 
   useEffect(() => {
@@ -117,6 +119,12 @@ const EditPlaceScreen = ({ navigation, route }) => {
       shouldValidate: true,
     });
   }, [selectedImage, setValue]);
+
+  useEffect(() => {
+    setValue('isFavorite', placeIsFavorite, {
+      shouldValidate: true,
+    });
+  }, [placeIsFavorite, setValue]);
 
   useEffect(() => {
     if (imageLibraryResponse) {
@@ -156,9 +164,9 @@ const EditPlaceScreen = ({ navigation, route }) => {
   }, []);
 
   const onCameraPress = async () => {
-    const hastPermission = await requestCameraPermission();
+    const hasPermission = await requestCameraPermission();
 
-    if (!hastPermission) {
+    if (!hasPermission) {
       return;
     }
 

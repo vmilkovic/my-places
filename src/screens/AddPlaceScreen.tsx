@@ -41,7 +41,7 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
   const [selectedLocation, setSelectedLocation] = useState<Location>({
     latitude: VUB_LOCATION.latitude,
     longitude: VUB_LOCATION.longitude,
-    address: null,
+    address: VUB_LOCATION.address,
   });
 
   const user: User = useSelector(state => state.user);
@@ -90,7 +90,10 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
         const { selectedLocation: selectedMapAddress } = route.params;
         const { latitude, longitude } = selectedMapAddress;
 
-        getLocationAddress({ latitude, longitude }).then(address => {
+        getLocationAddress(
+          { latitude, longitude },
+          t<string>('errors.locationAddress'),
+        ).then(address => {
           setSelectedLocation({ latitude, longitude, address });
         });
       }
@@ -153,7 +156,12 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
   }, []);
 
   const onCameraPress = async () => {
-    const hastPermission = await requestCameraPermission();
+    const tranlsation = {
+      title: t<string>('permissions.camera.title'),
+      description: t<string>('permissions.camera.description'),
+      button: t<string>('permissions.camera.button'),
+    };
+    const hastPermission = await requestCameraPermission(tranlsation);
 
     if (!hastPermission) {
       return;

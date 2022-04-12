@@ -8,6 +8,7 @@ export const GOOGLE_GEOCODE_API_URL =
 export const VUB_LOCATION = {
   latitude: 45.8997256,
   longitude: 16.8418307,
+  address: 'Trg Eugena Kvaternika 4, 43000, Bjelovar',
 };
 
 export const CREATE_PLACES_TABEL_QUERY =
@@ -24,3 +25,4 @@ export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const ADD_PLACE = 'ADD_PLACE';
 export const LOAD_PLACES = 'LOAD_PLACES';
 export const UPDATE_PLACE = 'UPDATE_PLACE';
+export const LOAD_FAVORITE_PLACES = 'LOAD_FAVORITE_PLACES';

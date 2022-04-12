@@ -32,7 +32,17 @@ const LocationPicker = (props: {
   }, [mapPickedLocation, onLocationPicked, setPickedLocation]);
 
   const getLocationHandler = async () => {
-    const hasPermission = await requestLocationPermissions();
+    if (readonly) {
+      return;
+    }
+
+    const tranlsation = {
+      title: t<string>('permissions.location.title'),
+      description: t<string>('permissions.location.description'),
+      button: t<string>('permissions.location.button'),
+    };
+
+    const hasPermission = await requestLocationPermissions(tranlsation);
     if (!hasPermission) {
       return;
     }
@@ -45,7 +55,10 @@ const LocationPicker = (props: {
           const { coords } = position;
           const { latitude, longitude } = coords;
 
-          const address = await getLocationAddress(coords);
+          const address = await getLocationAddress(
+            coords,
+            t<string>('errors.locationAddress'),
+          );
 
           setPickedLocation({ latitude, longitude, address });
           onLocationPicked({ latitude, longitude, address });
@@ -85,7 +98,9 @@ const LocationPicker = (props: {
         {isFetching ? (
           <ActivityIndicator size="large" color={Colors.Primary} />
         ) : (
-          <Text>No location chosen yet!</Text>
+          <Text>
+            {t<string>('components.locationPicker.location.notChosen')}
+          </Text>
         )}
       </MapPreview>
       {readonly || (

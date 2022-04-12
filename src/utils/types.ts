@@ -65,3 +65,9 @@ export type Location = {
 };
 
 export type SupportedLanguages = 'en' | 'hr';
+
+export type PermissionsTranslation = {
+  title: string;
+  description: string;
+  button: string;
+};

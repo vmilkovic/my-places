@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { FlatList } from 'react-native';
-import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +17,7 @@ const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
   const { t } = useTranslation();
 
   const places: Place[] = useSelector(state => state.places.list);
+  const user: User = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   useFocusEffect(
@@ -31,7 +31,7 @@ const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
           onPress={() => navigation.navigate('FavoritePlaces')}
         />
       ));
-      dispatch(loadPlaces());
+      dispatch(loadPlaces(user.id));
     }, [navigation, t, dispatch]),
   );
 
