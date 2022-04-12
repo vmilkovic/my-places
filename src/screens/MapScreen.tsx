@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
-import { t } from 'i18next';
 
 import HeaderRight from 'components/HeaderRight';
 import { setRightHeader } from 'utils/helpers';
