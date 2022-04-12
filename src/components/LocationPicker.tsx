@@ -13,8 +13,9 @@ const LocationPicker = (props: {
   onLocationPicked: (location: Location) => void;
   mapPickedLocation: any;
   navigation: Object;
+  readonly: boolean;
 }) => {
-  const { onLocationPicked, navigation, mapPickedLocation } = props;
+  const { onLocationPicked, navigation, mapPickedLocation, readonly } = props;
 
   const [isFetching, setIsFetching] = useState(false);
   const [pickedLocation, setPickedLocation] = useState<Location>();
@@ -72,7 +73,7 @@ const LocationPicker = (props: {
   };
 
   const pickOnMapHanlder = () => {
-    navigation.navigate('Map', { pickedLocation });
+    navigation.navigate('Map', { pickedLocation, readonly });
   };
 
   return (
@@ -87,18 +88,20 @@ const LocationPicker = (props: {
           <Text>No location chosen yet!</Text>
         )}
       </MapPreview>
-      <View style={styles.actions}>
-        <CustomButton
-          style={styles.button}
-          title={t<string>('components.locationPicker.buttons.userLocation')}
-          onPress={getLocationHandler}
-        />
-        <CustomButton
-          style={styles.button}
-          title={t<string>('components.locationPicker.buttons.map')}
-          onPress={pickOnMapHanlder}
-        />
-      </View>
+      {readonly || (
+        <View style={styles.actions}>
+          <CustomButton
+            style={styles.button}
+            title={t<string>('components.locationPicker.buttons.userLocation')}
+            onPress={getLocationHandler}
+          />
+          <CustomButton
+            style={styles.button}
+            title={t<string>('components.locationPicker.buttons.map')}
+            onPress={pickOnMapHanlder}
+          />
+        </View>
+      )}
     </View>
   );
 };

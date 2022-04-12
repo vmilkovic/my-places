@@ -54,7 +54,13 @@ const MainNavigator = () => {
           headerLeft: HeaderLogo,
         }}
       />
-      <MainStackNavigator.Screen name="EditPlace" component={EditPlaceScreen} />
+      <MainStackNavigator.Screen
+        name="EditPlace"
+        component={EditPlaceScreen}
+        options={{
+          headerLeft: HeaderLogo,
+        }}
+      />
       <MainStackNavigator.Screen
         name="Settings"
         component={SettingsScreen}

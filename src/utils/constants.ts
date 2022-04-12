@@ -22,4 +22,5 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 
 export const ADD_PLACE = 'ADD_PLACE';
-export const SET_PLACES = 'SET_PLACES';
+export const LOAD_PLACES = 'LOAD_PLACES';
+export const UPDATE_PLACE = 'UPDATE_PLACE';

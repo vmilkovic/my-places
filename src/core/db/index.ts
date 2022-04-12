@@ -12,7 +12,7 @@ const db = openDatabase(
   {
     name: 'MyPlaces',
     location: 'default',
-    createFromLocation: '~MyPlaces.db',
+    createFromLocation: '~db/MyPlaces.db',
   },
   () => {
     console.info('Database connected!');
@@ -154,34 +154,57 @@ export const fetchUser = (username: string, password: string) => {
 };
 
 export const insertPlace = (place: Place) => {
-  const {
-    title,
-    description,
-    imageUri,
-    address,
-    latitude,
-    longitude,
-    isFavorite,
-    userId,
-  } = place;
+  const { title, description, imageUri, address, latitude, longitude, userId } =
+    place;
+
   const promise = new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
-        'INSERT INTO places (title, description, imageUri, address, latitude, longitude, isFavorite, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
-        [
-          title,
-          description,
-          imageUri,
-          address,
-          latitude,
-          longitude,
-          isFavorite,
-          userId,
-        ],
+        'INSERT INTO places (title, description, imageUri, address, latitude, longitude, userId) VALUES (?, ?, ?, ?, ?, ?, ?);',
+        [title, description, imageUri, address, latitude, longitude, userId],
         (_, result) => {
           resolve(result);
         },
         (_, err) => {
+          reject(err);
+        },
+      );
+    });
+  });
+
+  return promise;
+};
+
+export const changePlace = (place: Place) => {
+  const {
+    id,
+    title,
+    description,
+    address,
+    imageUri,
+    latitude,
+    longitude,
+    isFavorite,
+  } = place;
+
+  const promise = new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'UPDATE places SET title=?, description=?, address=?, imageUri=?, latitude=?, longitude=?, isFavorite=? WHERE id=?;',
+        [
+          title,
+          description,
+          address,
+          imageUri,
+          latitude,
+          longitude,
+          isFavorite,
+          id,
+        ],
+        (_, result) => {
+          resolve(result);
+        },
+        (err, _) => {
           reject(err);
         },
       );

@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { addPlace } from 'store/actions/places';
 import {
   setHeaderTitle,
   setRightHeader,
@@ -20,8 +22,10 @@ import Colors from 'utils/colors';
 
 import { IMAGE_SELECTION_LIMIT, VUB_LOCATION } from 'utils/constants';
 
-import type { AddPlacesProps } from 'utils/types';
+import type { AddPlacesProps, Location } from 'utils/types';
 import { ImagePickerResponse } from 'utils/interfaces';
+import Place from 'modules/place';
+import User from 'modules/user';
 
 const options = {
   selectionLimit: IMAGE_SELECTION_LIMIT,
@@ -34,17 +38,20 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
   const [cameraResponse, setCameraResponse] =
     useState<ImagePickerResponse>(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState({
+  const [selectedLocation, setSelectedLocation] = useState<Location>({
     latitude: VUB_LOCATION.latitude,
     longitude: VUB_LOCATION.longitude,
     address: null,
   });
 
+  const user: User = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const {
     control,
     setValue,
+    resetField,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -58,7 +65,17 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
     },
   });
 
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = (place: Place) => {
+    dispatch(addPlace({ ...place, userId: user.id }));
+    resetField('title');
+    resetField('description');
+    resetField('imageUri');
+    resetField('address');
+    resetField('latitude');
+    resetField('longitude');
+    setSelectedImage(null);
+    navigation.navigate('PlacesListTab');
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -81,7 +98,9 @@ const AddPlaceScreen = ({ navigation, route }: AddPlacesProps) => {
   );
 
   useEffect(() => {
-    setValue('imageUri', selectedImage, { shouldValidate: true });
+    setValue('imageUri', selectedImage?.uri, {
+      shouldValidate: true,
+    });
   }, [selectedImage, setValue]);
 
   useEffect(() => {

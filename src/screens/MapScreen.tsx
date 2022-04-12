@@ -11,14 +11,13 @@ import { Location } from 'utils/types';
 
 const MapScreen = ({ navigation, route }) => {
   const { params } = route;
-  const { pickedLocation } = params;
+  const { pickedLocation, readonly } = params;
   const { latitude, longitude } = pickedLocation;
 
   const initialLocation: Location = {
     latitude: latitude,
     longitude: longitude,
   };
-  const readonly = false;
 
   const [selectedLocation, setSelectedLocation] =
     useState<Location>(initialLocation);
@@ -36,16 +35,17 @@ const MapScreen = ({ navigation, route }) => {
     useCallback(() => {
       setRightHeader(
         navigation,
-        () => (
-          <HeaderRight
-            name="done"
-            color={Colors.Dark}
-            size={Fonts.size.HeaderIcon}
-            onPress={() =>
-              navigation.navigate('AddPlaceTab', { selectedLocation })
-            }
-          />
-        ),
+        () =>
+          readonly || (
+            <HeaderRight
+              name="done"
+              color={Colors.Dark}
+              size={Fonts.size.HeaderIcon}
+              onPress={() =>
+                navigation.navigate('AddPlaceTab', { selectedLocation })
+              }
+            />
+          ),
         true,
       );
     }, [navigation, selectedLocation]),

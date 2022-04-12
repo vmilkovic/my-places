@@ -5,11 +5,10 @@ import { useSelector } from 'react-redux';
 
 import MainNavigator from './MainNavigator';
 import AuthNavigator from './AuthNavigator';
-
-import { IUser } from 'utils/interfaces';
+import User from 'modules/user';
 
 const AppNavigator = () => {
-  const user: IUser = useSelector(state => state.user);
+  const user: User = useSelector(state => state.user);
   const isAuth = !!user.email;
 
   useEffect(() => {

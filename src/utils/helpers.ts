@@ -9,8 +9,9 @@ import { Location } from './types';
 export const setHeaderTitle = (
   navigation: NavigationProp<{}>,
   title: string,
+  isStackNavigator: boolean = false,
 ) => {
-  const stackNavigator = navigation.getParent();
+  const stackNavigator = isStackNavigator ? navigation : navigation.getParent();
   stackNavigator.setOptions({
     title,
   });

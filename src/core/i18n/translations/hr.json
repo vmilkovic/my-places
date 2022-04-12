@@ -19,7 +19,7 @@
         }
       },
       "buttons": {
-        "signIn": "Prijavi",
+        "signIn": "Prijavi se",
         "register": "Registriraj se"
       }
     },
@@ -52,7 +52,7 @@
         }
       },
       "buttons": {
-        "singIn": "Prijavi",
+        "signIn": "Prijavi",
         "register": "Registriraj se"
       }
     },
@@ -92,10 +92,62 @@
       }
     },
     "placeDetail": {
-      "title": "Opširnije o Mjestu"
+      "title": "Opširnije o Mjestu",
+      "sections": {
+        "image": {
+          "title": "Slika"
+        },
+        "location": {
+          "title": "Lokacija"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Naziv",
+          "placeholder": "Unesite naziv mjesta"
+        },
+        "address": {
+          "label": "Adresa",
+          "placeholder": "Unesite adresu mjesta"
+        },
+        "description": {
+          "label": "Opis",
+          "placeholder": "Unesite opis mjesta"
+        }
+      },
+      "buttons": {
+        "submit": "Spremi",
+        "camera": "Kamera"
+      }
     },
     "editPlace": {
-      "title": "Uredi Mjesto"
+      "title": "Uredi Mjesto",
+      "sections": {
+        "image": {
+          "title": "Slika"
+        },
+        "location": {
+          "title": "Lokacija"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Naziv",
+          "placeholder": "Unesite naziv mjesta"
+        },
+        "address": {
+          "label": "Adresa",
+          "placeholder": "Unesite adresu mjesta"
+        },
+        "description": {
+          "label": "Opis",
+          "placeholder": "Unesite opis mjesta"
+        }
+      },
+      "buttons": {
+        "submit": "Spremi",
+        "camera": "Kamera"
+      }
     },
     "map": {
       "title": "Odaberite lokaciju"

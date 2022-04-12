@@ -92,10 +92,62 @@
       }
     },
     "placeDetail": {
-      "title": "Place Detail"
+      "title": "Place Detail",
+      "sections": {
+        "image": {
+          "title": "Image"
+        },
+        "location": {
+          "title": "Location"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Title",
+          "placeholder": "Enter place title"
+        },
+        "address": {
+          "label": "Adress",
+          "placeholder": "Enter place address"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Enter place description"
+        }
+      },
+      "buttons": {
+        "submit": "Save",
+        "camera": "Camera"
+      }
     },
     "editPlace": {
-      "title": "Edit Place"
+      "title": "Edit Place",
+      "sections": {
+        "image": {
+          "title": "Image"
+        },
+        "location": {
+          "title": "Location"
+        }
+      },
+      "fields": {
+        "title": {
+          "label": "Title",
+          "placeholder": "Enter place title"
+        },
+        "address": {
+          "label": "Adress",
+          "placeholder": "Enter place address"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Enter place description"
+        }
+      },
+      "buttons": {
+        "submit": "Save",
+        "camera": "Camera"
+      }
     },
     "map": {
       "title": "Select location"

@@ -1,8 +1,9 @@
-import type { NavigationProp } from '@react-navigation/native';
+import type { NavigationProp, RouteProp } from '@react-navigation/native';
 import { StyleSheetProperties } from 'react-native';
 
 export type ListPlacesProps = {
   navigation: NavigationProp<{}>;
+  route: RouteProp<{}>;
 };
 
 export type AddPlacesProps = {

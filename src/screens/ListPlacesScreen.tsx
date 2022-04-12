@@ -1,9 +1,12 @@
-import React, { useCallback } from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useEffect } from 'react';
+import { FlatList } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { loadPlaces } from 'store/actions/places';
+import PlaceItem from 'components/PlaceItem';
 import HeaderRight from 'components/HeaderRight';
 import { setHeaderTitle, setRightHeader } from 'utils/helpers';
 import Colors from 'utils/colors';
@@ -13,6 +16,9 @@ import type { ListPlacesProps } from 'utils/types';
 
 const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
   const { t } = useTranslation();
+
+  const places: Place[] = useSelector(state => state.places.list);
+  const dispatch = useDispatch();
 
   useFocusEffect(
     useCallback(() => {
@@ -25,13 +31,28 @@ const ListPlacesScreen = ({ navigation }: ListPlacesProps) => {
           onPress={() => navigation.navigate('FavoritePlaces')}
         />
       ));
-    }, [navigation, t]),
+      dispatch(loadPlaces());
+    }, [navigation, t, dispatch]),
   );
 
   return (
-    <View>
-      <Text>{t<string>('screens.listPlaces.title')}</Text>
-    </View>
+    <FlatList
+      data={places}
+      keyExtractor={item => item.id}
+      renderItem={itemData => (
+        <PlaceItem
+          image={itemData.item.imageUri}
+          title={itemData.item.title}
+          address={itemData.item.address}
+          onSelect={() => {
+            navigation.navigate('PlaceDetail', {
+              placeTitle: itemData.item.title,
+              placeId: itemData.item.id,
+            });
+          }}
+        />
+      )}
+    />
   );
 };
 export default ListPlacesScreen;
